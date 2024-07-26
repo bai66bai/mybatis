@@ -10,6 +10,8 @@
     <packaging>pom</packaging>
     <modules>
         <module>MyBatis_demo1</module>
+        <module>MyBatis_demo2</module>
+        <module>MyBatis_demo3</module>
     </modules>
 
     <properties>

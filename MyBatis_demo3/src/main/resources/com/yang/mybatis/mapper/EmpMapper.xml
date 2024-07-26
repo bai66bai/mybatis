@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yang.mybatis.mapper.EmpMapper">
+<!--resultMap:设置自定义映射关系
+    id: 唯一标识，不能重复
+    type：设置映射关系中的实体类类型
+    子标签
+        id: 设置主键的元素关系
+        result：设置普通字段的映射关系
+            属性:
+                property：设置映射关系的属性名，必须是type属性所设置的实体类类型中的属性名
+                column：设置映射关系中的字段名，必须是sql语句查询出的字段名
+                注：若字段名和实体类中的属性名不一致，则可以通过resultMap设置自定义映射，
+                即使字段名和属性名一致的属性也要映射，也就是全部属性都要列出来-->
+    <resultMap id="empResultMap" type="Emp">
+        <id property="eid" column="eid"/>
+        <result property="empName" column="emp_name"/>
+        <result property="age" column="age"/>
+        <result property="sex" column="sex"/>
+        <result property="email" column="email"/>
+    </resultMap>
+<!--    List<Emp> getAllEmp();-->
+    <select id="getAllEmp" resultMap="empResultMap">
+        select * from t_emp
+    </select>
+
+    <select id="getAllEmpO" resultType="emp">
+        select * from t_emp
+    </select>
+
+    <resultMap id="empAnd" type=""></resultMap>
+<!--    Emp getEmpAndDept(@Param("eid") Integer eid);-->
+    <select id="getEmpAndDept" resultMap="">
+        select * from t_emp left join t_dept on t_emp.did = t_dept.did where t_emp.eid = #{eid}
+    </select>
+</mapper>
