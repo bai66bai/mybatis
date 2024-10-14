@@ -30,9 +30,34 @@
         select * from t_emp
     </select>
 
-    <resultMap id="empAnd" type=""></resultMap>
+
+<!--    处理多对一映射关系方式一：级联属性赋值-->
+    <resultMap id="empAndDeptResultMapOne" type="emp">
+        <id property="eid" column="eid"/>
+        <result property="empName" column="emp_name"/>
+        <result property="age" column="age"/>
+        <result property="sex" column="sex"/>
+        <result property="email" column="email"/>
+        <result property="dept.deptName" column="dept_name"/>
+    </resultMap>
+    <resultMap id="empAndDeptResultMapTwo" type="emp">
+        <id property="eid" column="eid"/>
+        <result property="empName" column="emp_name"/>
+        <result property="age" column="age"/>
+        <result property="sex" column="sex"/>
+        <result property="email" column="email"/>
+<!--
+            association:处理多对一的映射关系
+            property:需要处理多对的映射关系的属性名
+            javaType：该属性的类型
+-->
+        <association property="dept" javaType="Dept">
+            <id property="did" column="did"/>
+            <result property="deptName" column="dept_name"/>
+        </association>
+    </resultMap>
 <!--    Emp getEmpAndDept(@Param("eid") Integer eid);-->
-    <select id="getEmpAndDept" resultMap="">
+    <select id="getEmpAndDept" resultMap="empAndDeptResultMapTwo">
         select * from t_emp left join t_dept on t_emp.did = t_dept.did where t_emp.eid = #{eid}
     </select>
 </mapper>

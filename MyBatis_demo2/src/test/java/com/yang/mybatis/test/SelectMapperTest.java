@@ -22,7 +22,7 @@ public class SelectMapperTest {
     public void testGetUserById(){
         SqlSession sqlSession = SqlSessionUtil.sqlSessionUtils();
         SelectMapper mapper = sqlSession.getMapper(SelectMapper.class);
-        System.out.println(mapper.getUserById(3));
+        System.out.println(mapper.getUserById(5));
     }
 
     @Test

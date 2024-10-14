@@ -23,4 +23,14 @@ public class ResultMapTest {
         List<Emp> list = mapper.getAllEmp();
         list.forEach(System.out::println);
     }
+
+
+    @Test
+    public void testGetEmpAndDept(){
+        SqlSession sqlSession;
+        sqlSession = SqlSessionUtil.sqlSessionUtils();
+        EmpMapper mapper = sqlSession.getMapper(EmpMapper.class);
+        Emp emp = mapper.getEmpAndDept(1);
+        System.out.println(emp);
+    }
 }
