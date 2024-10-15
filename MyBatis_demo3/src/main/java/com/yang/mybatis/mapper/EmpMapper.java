@@ -12,4 +12,10 @@ public interface EmpMapper {
 
 //    查询员工以及员工所对应的部门信息
     Emp getEmpAndDept(@Param("eid") Integer eid);
+
+    /**
+     * 通过分布查询员工以及员工对应的部门信息
+     * 分布查询第一步：查询员工部门信息
+     */
+    Emp getEmpAndDeptByStepOne(@Param("eid") Integer eid);
 }

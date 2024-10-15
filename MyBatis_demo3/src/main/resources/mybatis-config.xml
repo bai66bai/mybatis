@@ -4,12 +4,14 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <properties resource="jdbc.properties"/>
+
+
 <!--    设置MyBatis的全局配置-->
-<!--    <settings>-->
-<!--&lt;!&ndash;        将下划线自动映射为驼峰，即emp_name:empName-->
-<!--            默认不支持需要设置为true&ndash;&gt;-->
-<!--        <setting name="mapUnderscoreToCamelCase" value="true"/>-->
-<!--    </settings>-->
+    <settings>
+<!--        将下划线自动映射为驼峰，即emp_name:empName
+            默认不支持需要设置为true-->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>
     <typeAliases>
         <package name="com.yang.mybatis.pojo"/>
     </typeAliases>
